@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bpmn-validator"
+version = "0.1.0"
+description = "BPMN 2.0.2 file validator with schema and semantic validation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [{name = "Torg Alimentos"}]
+keywords = ["bpmn", "validator", "bpmn2", "workflow", "process", "xml", "xsd"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Text Processing :: Markup :: XML",
+    "Typing :: Typed",
+]
+dependencies = [
+    "lxml>=5.0",
+    "click>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "lxml-stubs",
+    "pre-commit",
+]
+
+[project.urls]
+Homepage = "https://github.com/torg-alimentos/bpmn-validator"
+Repository = "https://github.com/torg-alimentos/bpmn-validator"
+Changelog = "https://github.com/torg-alimentos/bpmn-validator/blob/main/CHANGELOG.md"
+
+[project.scripts]
+bpmn-validator = "bpmn_validator.cli:main"
+
+[tool.setuptools.package-data]
+bpmn_validator = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=bpmn_validator --cov-report=term-missing"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = true

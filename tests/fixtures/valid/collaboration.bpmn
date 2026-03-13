@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             id="Definitions_1"
+             targetNamespace="http://example.com/bpmn">
+  <collaboration id="Collab_1">
+    <participant id="Part_1" name="Pool A" processRef="Process_1"/>
+    <participant id="Part_2" name="Pool B" processRef="Process_2"/>
+    <messageFlow id="MF_1" name="Request" sourceRef="Task_Send" targetRef="Task_Recv"/>
+  </collaboration>
+  <message id="Msg_1" name="RequestMessage"/>
+  <process id="Process_1" isExecutable="true" name="Process A">
+    <documentation>Sender process.</documentation>
+    <startEvent id="Start_A" name="Start A"/>
+    <sendTask id="Task_Send" name="Send Request" messageRef="Msg_1"/>
+    <endEvent id="End_A" name="End A"/>
+    <sequenceFlow id="F_A1" sourceRef="Start_A" targetRef="Task_Send"/>
+    <sequenceFlow id="F_A2" sourceRef="Task_Send" targetRef="End_A"/>
+  </process>
+  <process id="Process_2" isExecutable="false" name="Process B">
+    <documentation>Receiver process.</documentation>
+    <startEvent id="Start_B" name="Start B"/>
+    <receiveTask id="Task_Recv" name="Receive Request" messageRef="Msg_1"/>
+    <endEvent id="End_B" name="End B"/>
+    <sequenceFlow id="F_B1" sourceRef="Start_B" targetRef="Task_Recv"/>
+    <sequenceFlow id="F_B2" sourceRef="Task_Recv" targetRef="End_B"/>
+  </process>
+</definitions>
