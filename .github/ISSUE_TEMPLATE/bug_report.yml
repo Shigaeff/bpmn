@@ -1,0 +1,40 @@
+name: Bug Report
+description: Reportar um bug encontrado no projeto
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do bug
+      description: Descreva o bug de forma clara e objetiva.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      description: Liste os passos para reproduzir o comportamento.
+      placeholder: |
+        1. Vá para '...'
+        2. Execute '...'
+        3. Veja o erro
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+      description: O que você esperava que acontecesse?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Informações sobre o ambiente (SO, versão, etc.)
+      placeholder: |
+        - SO: Windows 11
+        - Versão: x.x.x
+    validations:
+      required: false
